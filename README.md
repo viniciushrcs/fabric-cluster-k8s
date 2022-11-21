@@ -25,3 +25,12 @@
 5. Gerar os artefatos de configuração
 
 - aplicar o `artifacts/job.yaml`
+
+6. Iniciar o Ordering Service
+
+- aplicar os arquivos dentro da pasta `/orderer/`
+
+7. Iniciar os Peers
+
+- aplicar o objeto `configmap/builder-config`
+- aplicar todos os objetos dentro da pasta `peers`
