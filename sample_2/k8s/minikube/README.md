@@ -1,9 +1,3 @@
-
-
-Dashboard
-=========
-> minikube dashboard
-
 ==================
 1. Storage Class
 ==================
