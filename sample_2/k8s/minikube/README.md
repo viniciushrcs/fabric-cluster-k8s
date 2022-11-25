@@ -4,43 +4,29 @@ Dashboard
 =========
 > minikube dashboard
 
-Start | Stop | Status
-=====================
-minkube start
-minikube stop
-minikube status
+==================
+1. Storage Class
+==================
+> kubectl apply -f k8s-storage-class.yaml
+Para conferir:
+> kubectl describe storageclass
 
-Launching
-=========
-> kubectl apply -f .
-
-Pod Status
-===========
+==================
+2. Criar Orderer
+==================
+> kubectl apply -f k8s-acme-orderer.yaml
+Para conferir:
 > kubectl get all
-
-Log into a container
-====================
-* Make sure the container/pod is running using the "kubectl get all"
-kubectl exec -it acme-orderer-0 sh
-kubectl exec -it acme-peer-0 sh
-kubectl exec -it budget-peer-0 sh
+> kubectl logs acme-orderer-0
 
 ==================
-1. Launch the Pods
+3. Criar Peer
 ==================
-* Video shows the launch of pods one by one, here we are launching all at the same time
-> cd minikube
-> kubectl apply -f .
+> kubectl apply -f k8s-acme-peer.yaml
+Para conferir:
+> kubectl get all
+> kubectl logs acme-peer-0
 
-==================
-2. Acme Peer Setup
-==================
-Log into the acme peer:
-> kubectl exec -it acme-peer-0 sh
-
-Setup the peer:
-> ./submit-channel-create.sh
-> ./join-channel.sh
 
 
 Validate the peer:
