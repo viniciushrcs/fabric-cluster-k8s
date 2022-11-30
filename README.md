@@ -51,8 +51,14 @@ Passo 6) Iniciar o Orderer
 - Existem 2 formas de iniciar o Orderer (1) com o System Channel e (2) sem o mesmo.
 	- Para criar com o System Channel, é necessário passar o Genesis Block como input. (path passado no arquivo `orderer.yaml`, seção General.BootstrapFile)
 
+`export ORDERER_FILELEDGER_LOCATION=path do diretorio que irá salvar o ledger`
+
+`export FABRIC_LOGGING_SPEC=INFO
+`
 `FABRIC_CFG_PATH` = path do `orderer.yaml`
-`orderer start`
+
+`orderer`
+
 
 ## 3) Peer
 
