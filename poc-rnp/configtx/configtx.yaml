@@ -1,0 +1,148 @@
+# ORGANIZATIONS
+Organizations:
+  - &Rnp
+    Name: Rnp
+    SkipAsForeign: false
+    ID: RnpMSP
+    MSPDir: ../crypto-config/ordererOrganizations/rnp.com/msp
+    Policies: &OrdererPolicies
+      Readers:
+          Type: Signature
+          Rule: "OR('RnpMSP.member')"
+      Writers:
+          Type: Signature
+          Rule: "OR('RnpMSP.member')"
+      Admins:
+          Type: Signature
+          Rule: "OR('RnpMSP.member')"
+      Endorsement:
+          Type: Signature
+          Rule: "OR('RnpMSP.member')"
+
+  - &Org1
+    Name: Org1
+    ID: Org1MSP
+    MSPDir: ../crypto-config/peerOrganizations/rnp.com/msp
+    Policies: &Org1Policies
+      Readers:
+          Type: Signature
+        #   Rule: "OR('AcmeMSP.admin', 'AcmeMSP.peer', 'AcmeMSP.client')"
+          Rule: "OR('Org1MSP.member')"
+      Writers:
+          Type: Signature
+        #   Rule: "OR('AcmeMSP.admin', 'AcmeMSP.client')"
+          Rule: "OR('Org1MSP.member')"
+      Admins:
+          Type: Signature
+          # UPDATE: Dec 15, 2019 - This is a dev env so its OK in Prod ... use AcmeMSP.admin
+          Rule: "OR('Org1MSP.member')"
+      Endorsement:
+          Type: Signature
+          Rule: "OR('Org1MSP.member')"
+    AnchorPeers:
+      - Host: peer1.acme.com
+        Port: 7051
+
+  
+#   ORDERER
+Orderer: &OrdererDefaults
+
+  OrdererType: solo
+
+  Addresses:
+    - localhost:7050
+
+  # Policies for Orderer
+  Policies:
+    Readers:
+        Type: ImplicitMeta
+        Rule: "ANY Readers"
+    Writers:
+        Type: ImplicitMeta
+        Rule: "ANY Writers"
+    Admins:
+        Type: ImplicitMeta  
+        # UPDATED December 15, 2019
+        Rule: "ANY Admins"
+        # Rule: "MAJORITY Admins"
+
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+        Type: ImplicitMeta
+        Rule: "ANY Writers"
+
+  # Batch Timeout: The amount of time to wait before creating a batch
+  BatchTimeout: 2s
+
+  # Batch Size: Controls the number of messages batched into a block
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 98 MB
+    PreferredMaxBytes: 512 KB
+
+
+Application: &ApplicationDefaults
+
+  
+  # Default policies
+  Policies: &ApplicationDefaultPolicies
+
+    # approveformyorg
+    LifecycleEndorsement:
+        Type: ImplicitMeta
+        # Rule: "MAJORITY Endorsement"
+        Rule: "ANY Endorsement"
+    
+    # --channel-config-policy
+    Endorsement:
+        Type: ImplicitMeta
+        Rule: "MAJORITY Endorsement"
+    Readers:
+        Type: ImplicitMeta
+        Rule: "ANY Readers"
+    Writers:
+        Type: ImplicitMeta
+        Rule: "ANY Writers"
+    Admins:
+        Type: ImplicitMeta
+        Rule: "MAJORITY Admins"
+  Organizations:
+ 
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+        Type: ImplicitMeta
+        Rule: "ANY Readers"
+    Writers:
+        Type: ImplicitMeta
+        Rule: "ANY Writers"
+    Admins:
+        Type: ImplicitMeta
+        Rule: "MAJORITY Admins"
+ 
+Profiles:
+  RnpOrdererGenesis:
+      <<: *ChannelDefaults
+      Orderer:
+          <<: *OrdererDefaults
+          Organizations:
+              - <<: *Rnp
+      Consortiums:
+        EducationConsortium:   
+            Organizations:
+                  - <<: *Org1
+
+                  
+  RnpChannel:
+    <<: *ChannelDefaults
+    Consortium: EducationConsortium
+    Application:
+        <<: *ApplicationDefaults
+        
+        Organizations:
+            - <<: *Org1
+
+
+
