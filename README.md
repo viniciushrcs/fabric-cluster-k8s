@@ -24,11 +24,14 @@ Passo 1) Criar o arquivo `configtx.yaml`
 	- Profiles
 
 Passo 2) Criar Identidades e MSPs
+**WIP**
 
-**TBD**
+- criar arquivo crypto-config.yaml 
+- Rodar o comando `cryptogen generate --config=./cryptogen/crypto-config.yaml`
 
 Passo 3) Criar bloco gênesis
 
+`export FABRIC_CFG_PATH=$PWD`
 `configtxgen -outputBlock=nome_arquivo_output -profile=nome_da_seção -channelId=nome_do_canal`
 
 Passo 4) Criar a transação Create Channel Transaction
