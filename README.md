@@ -100,4 +100,10 @@ Passo 2) Instalar o chaincode no Peer
 
 `peer lifecycle chaincode install path_para_o_pacote_criado`
 
-**TBD**
+Para confirmar que foi instalado corretamente:
+
+`peer lifecycle chaincode queryinstalled`
+
+` ## Package ID: gocc.1.0-1.0:2009bd5cc8cfb167c1731aff8d22c5584bab3ac407f6b37007afbf4abce2a226, Label: gocc.1.0-1.0`
+
+
