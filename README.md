@@ -32,11 +32,11 @@ Passo 2) Criar Identidades e MSPs
 Passo 3) Criar bloco gênesis
 
 `export FABRIC_CFG_PATH=$PWD`
-`configtxgen -outputBlock=nome_arquivo_output -profile=nome_da_seção -channelId=nome_do_canal`
+`configtxgen -outputBlock nome_arquivo_output -profile nome_da_seção -channelID nome_do_canal`
 
 Passo 4) Criar a transação Create Channel Transaction
 
-`configtxgen -outputCreateChannelTx=nome_arquivo_output -profile=nome_da_seção -channelId=nome_do_canal`
+`configtxgen -outputCreateChannelTx nome_arquivo_output -profile nome_da_seção -channelID nome_do_canal`
 
 ## 2) Orderer
 
