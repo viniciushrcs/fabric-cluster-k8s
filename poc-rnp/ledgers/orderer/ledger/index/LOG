@@ -1,6 +1,26 @@
-=============== Nov 30, 2022 (-03) ===============
-08:21:03.652266 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
-08:21:03.656186 db@open opening
-08:21:03.657766 version@stat F·[] S·0B[] Sc·[]
-08:21:03.659704 db@janitor F·2 G·0
-08:21:03.659745 db@open done T·3.543995ms
+=============== Dec 1, 2022 (-03) ===============
+05:57:26.193719 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+05:57:26.199068 db@open opening
+05:57:26.199724 version@stat F·[] S·0B[] Sc·[]
+05:57:26.202073 db@janitor F·2 G·0
+05:57:26.202095 db@open done T·3.019302ms
+=============== Dec 1, 2022 (-03) ===============
+05:58:09.046218 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+05:58:09.046272 version@stat F·[] S·0B[] Sc·[]
+05:58:09.046287 db@open opening
+05:58:09.046302 journal@recovery F·1
+05:58:09.047360 journal@recovery recovering @1
+05:58:09.050709 memdb@flush created L0@2 N·4 S·193B "ord..nfo,v2":"ord..\x00n\x00,v3"
+05:58:09.050826 version@stat F·[1] S·193B[193B] Sc·[0.25]
+05:58:09.055726 db@janitor F·3 G·0
+05:58:09.055748 db@open done T·9.457759ms
+=============== Dec 1, 2022 (-03) ===============
+06:00:18.594460 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+06:00:18.594533 version@stat F·[1] S·193B[193B] Sc·[0.25]
+06:00:18.594540 db@open opening
+06:00:18.594557 journal@recovery F·1
+06:00:18.595007 journal@recovery recovering @3
+06:00:18.600051 memdb@flush created L0@5 N·1 S·142B "ord..nfo,v6":"ord..nfo,v6"
+06:00:18.600244 version@stat F·[2] S·335B[335B] Sc·[0.50]
+06:00:18.607959 db@janitor F·4 G·0
+06:00:18.607990 db@open done T·13.448007ms

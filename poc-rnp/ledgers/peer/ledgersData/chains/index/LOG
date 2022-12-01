@@ -1,0 +1,16 @@
+=============== Dec 1, 2022 (-03) ===============
+05:58:46.682997 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+05:58:46.687794 db@open opening
+05:58:46.687963 version@stat F·[] S·0B[] Sc·[]
+05:58:46.691130 db@janitor F·2 G·0
+05:58:46.691138 db@open done T·3.337252ms
+=============== Dec 1, 2022 (-03) ===============
+06:03:41.526415 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+06:03:41.526451 version@stat F·[] S·0B[] Sc·[]
+06:03:41.526467 db@open opening
+06:03:41.526483 journal@recovery F·1
+06:03:41.526826 journal@recovery recovering @1
+06:03:41.529917 memdb@flush created L0@2 N·1 S·119B "_\x00f,v1":"_\x00f,v1"
+06:03:41.530016 version@stat F·[1] S·119B[119B] Sc·[0.25]
+06:03:41.536276 db@janitor F·3 G·0
+06:03:41.536292 db@open done T·9.822856ms
