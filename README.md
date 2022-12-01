@@ -64,9 +64,26 @@ Passo 6) Iniciar o Orderer
 
 Passo 7) Criar o arquivo com configurações do Peer, `core.yaml`
 
+colocar o local onde será salvo o ledger do peer
+- fileSystemPath: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/ledgers/peer
+
+colocar o local com as credenciais do Admin
+- mspConfigPath: ../crypto-config/peerOrganizations/rnp.com/users/Admin@rnp.com/msp
+
 Passo 8) Iniciar o Peer
 
 `peer node start`
+
+Passo 9) Criar o Channel
+
+- O orderer precisa estar rodando
+- `peer channel create -o localhost:7050 -c nome_do_canal -f path_do_arquivo_de_criacao_do_channel`
+
+Passo 10) Entrar no Channel
+
+- `peer channel join -o localhost:7050 -b caminho_do_arquivo_com_bloco_inicial_do_channel`
+
+Para conferir, rodar o comando `peer channel list` que deve retornar os channels que o peer entrou
 
 ## 4) Smart contracts
 
