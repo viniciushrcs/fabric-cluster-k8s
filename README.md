@@ -29,7 +29,7 @@ Passo 2) Criar Identidades e MSPs
 - criar arquivo crypto-config.yaml 
 - Rodar o comando `cryptogen generate --config=./cryptogen/crypto-config.yaml`
 
-Passo 3) Criar bloco gênesis
+Passo 3) Criar bloco gênesis (orderer channel)
 
 `export FABRIC_CFG_PATH=$PWD`
 `configtxgen -outputBlock nome_arquivo_output -profile nome_da_seção -channelID nome_do_canal`
@@ -107,3 +107,20 @@ Para confirmar que foi instalado corretamente:
 ` ## Package ID: gocc.1.0-1.0:2009bd5cc8cfb167c1731aff8d22c5584bab3ac407f6b37007afbf4abce2a226, Label: gocc.1.0-1.0`
 
 
+Passo 3) Aprovação chaincode *Caso necessário aprovação das organizações*
+
+- para uma organização aprovar um chaincode
+
+`peer lifecycle chaincode approveformyorg -n nome_chaincode -v versao_chaincode -C nome_canal --sequence numero_sequencia --init-required --package-id id_pacote_cc`
+
+- para checar se o approve estar pronto para ser commitado
+
+`peer lifecycle chaincode checkcommitreadiness -n nome_chaincode -v versao -C nome_canal --sequence numero_sequencia --init-required`
+
+3.1) Commitar o chaincode
+
+`peer lifecycle chaincode commit -n nome_chaincode -v versao -C nome_canal --sequence numero_sequencia --init-required`
+
+- para checar se foi commitado corretamente
+
+`peer lifecycle chaincode querycommitted -n nome_chaincode -C nome_canal`

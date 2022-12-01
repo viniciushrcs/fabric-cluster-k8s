@@ -1,3 +1,12 @@
+Capabilities:
+  Application: &ApplicationCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+
 # ORGANIZATIONS
 Organizations:
   - &Rnp
@@ -80,7 +89,9 @@ Orderer: &OrdererDefaults
     MaxMessageCount: 10
     AbsoluteMaxBytes: 98 MB
     PreferredMaxBytes: 512 KB
-
+  
+  Capabilities:
+    <<: *OrdererCapabilities
 
 Application: &ApplicationDefaults
 
@@ -109,6 +120,8 @@ Application: &ApplicationDefaults
         Rule: "MAJORITY Admins"
   Organizations:
  
+  Capabilities:
+    <<: *ApplicationCapabilities
 
 Channel: &ChannelDefaults
   Policies:
@@ -122,6 +135,9 @@ Channel: &ChannelDefaults
         Type: ImplicitMeta
         Rule: "MAJORITY Admins"
  
+  Capabilities:
+    <<: *ChannelCapabilities
+
 Profiles:
   RnpOrdererGenesis:
       <<: *ChannelDefaults
@@ -132,8 +148,12 @@ Profiles:
       Consortiums:
         EducationConsortium:   
             Organizations:
-                  - <<: *Org1
+                  - <<: *Org1          
+      Application:
+            <<: *ApplicationDefaults
 
+            Organizations:
+                - <<: *Org1
                   
   RnpChannel:
     <<: *ChannelDefaults
