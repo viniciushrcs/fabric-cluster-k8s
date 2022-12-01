@@ -124,3 +124,15 @@ Passo 3) Aprovação chaincode *Caso necessário aprovação das organizações*
 - para checar se foi commitado corretamente
 
 `peer lifecycle chaincode querycommitted -n nome_chaincode -C nome_canal`
+
+Passo 4) Inicializar chaincode
+
+`peer chaincode invoke --isInit -n nome_chaincode -C nome_channel -c args_json_format`
+
+Passo 5) Query chaincode
+
+`peer chaincode query -C nome_channel -n nome_chaincode -c args_json_format'`
+
+Passo 6) Invocar chaincode
+
+`peer chaincode invoke -n nome_chaincode -C nome_channel -c args_json_format`
