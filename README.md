@@ -85,6 +85,19 @@ Passo 10) Entrar no Channel
 
 Para conferir, rodar o comando `peer channel list` que deve retornar os channels que o peer entrou
 
-## 4) Smart contracts
+## 4) Chaincode
+
+Passo 1) Empacotar o chaincode
+
+- Esse passo é executado após o smart contract já ter sido desenvolvido
+- o peer deve estar rodando
+
+`peer lifecycle chaincode package -p path_chaincode --label label_escolhida -l "linguagem_de_programacao"`
+
+Passo 2) Instalar o chaincode no Peer
+
+- o pacote criado é o arquivo tar.gz que foi criado no comando acima
+
+`peer lifecycle chaincode install path_para_o_pacote_criado`
 
 **TBD**
