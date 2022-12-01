@@ -14,3 +14,22 @@
 06:03:41.548061 version@stat F·[1] S·119B[119B] Sc·[0.25]
 06:03:41.555629 db@janitor F·3 G·0
 06:03:41.555645 db@open done T·10.950823ms
+=============== Dec 1, 2022 (-03) ===============
+06:12:33.049719 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+06:12:33.049818 version@stat F·[1] S·119B[119B] Sc·[0.25]
+06:12:33.049837 db@open opening
+06:12:33.049857 journal@recovery F·1
+06:12:33.050172 journal@recovery recovering @3
+06:12:33.052148 memdb@flush created L0@5 N·1 S·127B "rnp..l\x00s,v3":"rnp..l\x00s,v3"
+06:12:33.052857 version@stat F·[2] S·246B[246B] Sc·[0.50]
+06:12:33.060697 db@janitor F·4 G·0
+06:12:33.060711 db@open done T·10.871454ms
+=============== Dec 1, 2022 (-03) ===============
+06:13:17.654792 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+06:13:17.654837 version@stat F·[2] S·246B[246B] Sc·[0.50]
+06:13:17.654853 db@open opening
+06:13:17.654870 journal@recovery F·1
+06:13:17.655206 journal@recovery recovering @6
+06:13:17.655736 version@stat F·[2] S·246B[246B] Sc·[0.50]
+06:13:17.663661 db@janitor F·4 G·0
+06:13:17.663699 db@open done T·8.838844ms
