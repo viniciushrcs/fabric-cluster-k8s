@@ -1,0 +1,25 @@
+=============== Dec 4, 2022 (-03) ===============
+11:31:59.403852 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:31:59.408607 db@open opening
+11:31:59.408804 version@stat F·[] S·0B[] Sc·[]
+11:31:59.412079 db@janitor F·2 G·0
+11:31:59.412101 db@open done T·3.470419ms
+=============== Dec 4, 2022 (-03) ===============
+11:39:45.272553 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:39:45.272605 version@stat F·[] S·0B[] Sc·[]
+11:39:45.272620 db@open opening
+11:39:45.272645 journal@recovery F·1
+11:39:45.273778 journal@recovery recovering @1
+11:39:45.273874 version@stat F·[] S·0B[] Sc·[]
+11:39:45.278676 db@janitor F·2 G·0
+11:39:45.278696 db@open done T·6.065081ms
+=============== Dec 4, 2022 (-03) ===============
+11:42:41.252181 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:42:41.252232 version@stat F·[] S·0B[] Sc·[]
+11:42:41.252247 db@open opening
+11:42:41.252272 journal@recovery F·1
+11:42:41.253231 journal@recovery recovering @2
+11:42:41.255197 memdb@flush created L0@4 N·2 S·141B "air..l\x00\x01,v2":"air..l\x00\a,d1"
+11:42:41.255273 version@stat F·[1] S·141B[141B] Sc·[0.25]
+11:42:41.259822 db@janitor F·3 G·0
+11:42:41.259851 db@open done T·7.593348ms

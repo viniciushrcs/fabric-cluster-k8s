@@ -53,8 +53,8 @@ Passo 6) Iniciar o Orderer
 
 `export ORDERER_FILELEDGER_LOCATION=path do diretorio que irá salvar o ledger`
 
-`export FABRIC_LOGGING_SPEC=INFO
-`
+`export FABRIC_LOGGING_SPEC=INFO`
+
 `FABRIC_CFG_PATH` = path do `orderer.yaml`
 
 `orderer`

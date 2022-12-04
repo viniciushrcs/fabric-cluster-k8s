@@ -1,0 +1,26 @@
+=============== Dec 4, 2022 (-03) ===============
+11:31:59.380892 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:31:59.385617 db@open opening
+11:31:59.385981 version@stat F·[] S·0B[] Sc·[]
+11:31:59.388913 db@janitor F·2 G·0
+11:31:59.388934 db@open done T·3.297622ms
+=============== Dec 4, 2022 (-03) ===============
+11:39:45.255737 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:39:45.255786 version@stat F·[] S·0B[] Sc·[]
+11:39:45.255801 db@open opening
+11:39:45.255816 journal@recovery F·1
+11:39:45.256694 journal@recovery recovering @1
+11:39:45.258513 memdb@flush created L0@2 N·1 S·120B "f,v1":"f,v1"
+11:39:45.258609 version@stat F·[1] S·120B[120B] Sc·[0.25]
+11:39:45.263799 db@janitor F·3 G·0
+11:39:45.263829 db@open done T·8.024723ms
+=============== Dec 4, 2022 (-03) ===============
+11:42:41.235441 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:42:41.235504 version@stat F·[1] S·120B[120B] Sc·[0.25]
+11:42:41.235518 db@open opening
+11:42:41.235535 journal@recovery F·1
+11:42:41.236710 journal@recovery recovering @3
+11:42:41.238737 memdb@flush created L0@5 N·4 S·5KiB "lai..nel,v4":"und..Key,v3"
+11:42:41.238814 version@stat F·[2] S·6KiB[6KiB] Sc·[0.50]
+11:42:41.243777 db@janitor F·4 G·0
+11:42:41.243802 db@open done T·8.280859ms
