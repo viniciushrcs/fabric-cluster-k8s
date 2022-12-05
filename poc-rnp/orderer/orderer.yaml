@@ -9,7 +9,7 @@ General:
     BootstrapMethod: file
 
     # Used to be "GenesisFile: ./acme-genesis.block" in Fabric 1.x
-    BootstrapFile: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/configtx/poc-rnp-genesis.block
+    BootstrapFile: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/configtx/rnp-genesis.block
 
     # BCCSP Setup
     BCCSP:
