@@ -92,7 +92,7 @@ FileLedger:
     # Location: The directory to store the blocks in.
     # Windows - if you get a LevelDb error in launching orderer use the VM file 
     # by uncommenting the following line - comment the Location: ./ledger 
-    Location: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/ledgers/orderer/ledger
+    Location: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/ledgers/orderer
  
     # The prefix to use when generating a ledger directory in temporary space.
     Prefix: hyperledger-fabric-ordererledger    
