@@ -3,114 +3,103 @@
 ## 1) Configuração da rede
 
 Passo 1) Criar Identidades e MSPs
-
-- entrar na pasta cryptogen 
+- entrar na pasta /poc-rnp/  
 - Rodar o comando `cryptogen generate --config=./cryptogen/crypto-config.yaml`
 
-Passo 3) Criar bloco gênesis (orderer channel)
+Passo 2) Criar bloco gênesis (orderer channel)
 
+- entrar na pasta configtx
+- rodar os comandos:
 `export FABRIC_CFG_PATH=$PWD`
-`configtxgen -outputBlock nome_arquivo_output -profile nome_da_seção -channelID nome_do_canal`
+`configtxgen -outputBlock rnp-genesis.block -profile RnpOrdererGenesis -channelID ordererchannel`
 
-Passo 4) Criar a transação Create Channel Transaction
+Passo 3) Criar a transação Create Channel Transaction
 
-`configtxgen -outputCreateChannelTx nome_arquivo_output -profile nome_da_seção -channelID nome_do_canal`
+`configtxgen -outputCreateChannelTx rnp-create-channel.tx -profile RnpChannel -channelID rnpchannel`
 
 ## 2) Orderer
 
-Paso 5) Criar o arquivo com configurações do Orderer, `orderer.yaml`
-- Seções + importantes:
-	- General
-	- FileLedger: Local no Filesystem onde o Orderer irá persistir o Ledger
-	- Consensus: Usado para gerenciar armazenamento quando o tipo de consenso é RAFT
-	- Operations
+Passo 4) Iniciar o Orderer
+- Entrar na pasta orderer
 
-Passo 6) Iniciar o Orderer
-- Existem 2 formas de iniciar o Orderer (1) com o System Channel e (2) sem o mesmo.
-	- Para criar com o System Channel, é necessário passar o Genesis Block como input. (path passado no arquivo `orderer.yaml`, seção General.BootstrapFile)
-
-`export ORDERER_FILELEDGER_LOCATION=path do diretorio que irá salvar o ledger`
+`export ORDERER_FILELEDGER_LOCATION=../ledgers/orderer/`
 
 `export FABRIC_LOGGING_SPEC=INFO`
 
-`FABRIC_CFG_PATH` = path do `orderer.yaml`
+`export FABRIC_CFG_PATH=$PWD`
 
 `orderer`
 
 
 ## 3) Peer
 
-Passo 7) Criar o arquivo com configurações do Peer, `core.yaml`
+Passo 5) Iniciar o peer
 
-colocar o local onde será salvo o ledger do peer
-- fileSystemPath: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/ledgers/peer
-
-colocar o local com as credenciais do Admin
-- mspConfigPath: ../crypto-config/peerOrganizations/rnp.com/users/Admin@rnp.com/msp
-
-Passo 8) Iniciar o Peer
-
+`export FABRIC_CFG_PATH=$PWD`
 `peer node start`
 
-Passo 9) Criar o Channel
+Passo 6) Criar o Channel
 
-- O orderer precisa estar rodando
-- `peer channel create -o localhost:7050 -c nome_do_canal -f path_do_arquivo_de_criacao_do_channel`
+- com o orderer rodando e o peer rodando, abrir um novo terminal
+- neste novo terminal, entrar na pasta peer
 
-Passo 10) Entrar no Channel
+- `peer channel create -o localhost:7050 -c rnpchannel -f ../configtx/rnp-create-channel.tx`
 
-- `peer channel join -o localhost:7050 -b caminho_do_arquivo_com_bloco_inicial_do_channel`
+Passo 7) Entrar no Channel
+
+- `peer channel join -o localhost:7050 -b ./rnpchannel.block`
 
 Para conferir, rodar o comando `peer channel list` que deve retornar os channels que o peer entrou
 
 ## 4) Chaincode
 
-Passo 1) Empacotar o chaincode
+Passo 8) Empacotar o chaincode
 
-- Esse passo é executado após o smart contract já ter sido desenvolvido
-- o peer deve estar rodando
+- com o peer e orderer rodando, em um outro terminal, executar na pasta peer
 
-`peer lifecycle chaincode package -p path_chaincode --label label_escolhida -l "linguagem_de_programacao"`
+`peer lifecycle chaincode package ../packages/test.1.0-1.0.tar.gz -p ../packages/chaincode_example02 --label test.1.0-1.0 -l "node" `
 
-Passo 2) Instalar o chaincode no Peer
+Passo 9) Instalar o chaincode no Peer
 
 - o pacote criado é o arquivo tar.gz que foi criado no comando acima
 
-`peer lifecycle chaincode install path_para_o_pacote_criado`
+`peer lifecycle chaincode install ../packages/test.1.0-1.0.tar.gz`
 
 Para confirmar que foi instalado corretamente:
 
 `peer lifecycle chaincode queryinstalled`
 
-` ## Package ID: gocc.1.0-1.0:2009bd5cc8cfb167c1731aff8d22c5584bab3ac407f6b37007afbf4abce2a226, Label: gocc.1.0-1.0`
+` ## Package ID: test.1.0-1.0:3d84c73241e5fd7d07506bfee361b49165c136d8781c6bd444197df9c494c4bf, Label: test.1.0-1.0`
 
 
-Passo 3) Aprovação chaincode *Caso necessário aprovação das organizações*
+Passo 10) Aprovação chaincode 
 
 - para uma organização aprovar um chaincode
 
-`peer lifecycle chaincode approveformyorg -n nome_chaincode -v versao_chaincode -C nome_canal --sequence numero_sequencia --init-required --package-id id_pacote_cc`
+`peer lifecycle chaincode approveformyorg -n test -v 1.0 -C rnpchannel --sequence 1 --init-required --package-id test.1.0-1.0:3d84c73241e5fd7d07506bfee361b49165c136d8781c6bd444197df9c494c4bf`
 
 - para checar se o approve estar pronto para ser commitado
 
-`peer lifecycle chaincode checkcommitreadiness -n nome_chaincode -v versao -C nome_canal --sequence numero_sequencia --init-required`
+`peer lifecycle chaincode checkcommitreadiness -n test -v 1.0 -C rnpchannel --sequence 1 --init-required`
 
-3.1) Commitar o chaincode
+```## Chaincode definition for chaincode 'test', version '1.0', sequence '1' on channel 'rnpchannel' approval status by org: Org1MSP: true``` 
 
-`peer lifecycle chaincode commit -n nome_chaincode -v versao -C nome_canal --sequence numero_sequencia --init-required`
+Passo 11) Commitar o chaincode
+
+`peer lifecycle chaincode commit -n test -v 1.0 -C rnpchannel --sequence 1 --init-required`
 
 - para checar se foi commitado corretamente
 
-`peer lifecycle chaincode querycommitted -n nome_chaincode -C nome_canal`
+`peer lifecycle chaincode querycommitted -n test -C rnpchannel`
 
 Passo 4) Inicializar chaincode
 
-`peer chaincode invoke --isInit -n nome_chaincode -C nome_channel -c args_json_format`
+`peer chaincode invoke --isInit -n test -C rnpchannel -c'{"Args":["init", "a", "100", "b", "300"]}'`
 
 Passo 5) Query chaincode
 
-`peer chaincode query -C nome_channel -n nome_chaincode -c args_json_format'`
+`peer chaincode query -C rnpchannel -n test -c '{"Args":["query","a"]}'`
 
 Passo 6) Invocar chaincode
 
-`peer chaincode invoke -n nome_chaincode -C nome_channel -c args_json_format`
+`peer chaincode invoke -n test -C rnpchannel -c '{"Args": ["invoke", "a", "b", "20"]}'`
