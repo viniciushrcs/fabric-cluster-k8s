@@ -1,9 +1,39 @@
-# fabric-bootstrap
+
+# fabric-bootstrap com scripts shell
+
+- todos os scripts devem ser executados a partir da pasta poc-rnp
+
+Passo 1) Autenticar no terminal
+
+- autenticação no terminal
+`su - @usuário`
+
+Passo 2) Iniciar o Orderer da primeira vez (irá gerar os certificados, genesis_block, e create_channel tx)
+
+`bash scripts/orderer/init.sh`
+
+- após a execução do script acima, para iniciar novamente o Orderer basta rodar o script `start_orderer.sh` e para terminá-lo `stop_orderer.sh`
+
+Passo 3) Peer
+
+- Em outro terminal
+
+`su - @usuario`
+
+`bash scripts/peer/init.sh`
+
+- após a execução do script acima, para iniciar novamente o Peer basta rodar o script `start_node.sh` e para terminá-lo `stop_node.sh`
+
+
+------
+
+# fabric-bootstrap binários
 
 ## 1) Configuração da rede
 
 Passo 1) Criar Identidades e MSPs
 - entrar na pasta /poc-rnp/  
+- criar arquivo crypto-config.yaml
 - Rodar o comando `cryptogen generate --config=./cryptogen/crypto-config.yaml`
 
 Passo 2) Criar bloco gênesis (orderer channel)
