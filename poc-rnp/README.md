@@ -24,6 +24,16 @@ Passo 3) Peer
 
 - após a execução do script acima, para iniciar novamente o Peer basta rodar o script `start_node.sh` e para terminá-lo `stop_node.sh`
 
+Passo 4) Chaincode
+
+- Em outro terminal
+
+`su - @usuario`
+
+`bash scripts/peer/chaincode/chaincode_package_install.sh`
+`bash scripts/peer/chaincode/chaincode_approve_commit.sh`
+`bash scripts/peer/chaincode/chaincode_test_init.sh`
+`bash scripts/peer/chaincode/chaincode_test.sh `
 
 ------
 
@@ -87,7 +97,7 @@ Passo 8) Empacotar o chaincode
 
 - com o peer e orderer rodando, em um outro terminal, executar na pasta peer
 
-`peer lifecycle chaincode package ../packages/test.1.0-1.0.tar.gz -p ../packages/chaincode_example02 --label test.1.0-1.0 -l "node" `
+`peer lifecycle chaincode package ../packages/test.1.0-1.0.tar.gz -p ../packages/chaincode_example02 --label test.1.0-1.0 -l "node"`
 
 Passo 9) Instalar o chaincode no Peer
 
