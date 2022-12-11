@@ -1,5 +1,5 @@
 #1.
-./clean.sh
+bash scripts/orderer/clean.sh all
 
 BASE_CONFIG_DIR=../../setup/configtx
 

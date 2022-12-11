@@ -29,5 +29,6 @@ sleep   $WAIT_TIME
 
 
 bash scripts/peer/join_channel.sh
+killall peer
 
-echo "It is all right! All Steps were executed."
+echo "It is all right! All Steps were executed. You can start the node using the script init.sh"

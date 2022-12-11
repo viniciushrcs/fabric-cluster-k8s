@@ -9,7 +9,7 @@ General:
     BootstrapMethod: file
 
     # Used to be "GenesisFile: ./acme-genesis.block" in Fabric 1.x
-    BootstrapFile: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/configtx/rnp-genesis.block
+    BootstrapFile: ../configtx/rnp-genesis.block
 
     # BCCSP Setup
     BCCSP:
@@ -24,7 +24,7 @@ General:
 
     # Directory for the private crypto material needed by the
     # orderer. 
-    LocalMSPDir: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/crypto-config/ordererOrganizations/rnp.com/orderers/orderer.rnp.com/msp
+    LocalMSPDir: ../crypto-config/ordererOrganizations/rnp.com/orderers/orderer.rnp.com/msp
 
     # Identity to register the local MSP material with the MSP
     LocalMSPID: RnpMSP
@@ -92,7 +92,7 @@ FileLedger:
     # Location: The directory to store the blocks in.
     # Windows - if you get a LevelDb error in launching orderer use the VM file 
     # by uncommenting the following line - comment the Location: ./ledger 
-    Location: /home/viniciushrcs/vini_projects/fabric-cluster-k8s/poc-rnp/ledgers/orderer
+    Location: ../ledgers/orderer
  
     # The prefix to use when generating a ledger directory in temporary space.
     Prefix: hyperledger-fabric-ordererledger    

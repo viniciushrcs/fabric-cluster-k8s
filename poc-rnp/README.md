@@ -3,37 +3,29 @@
 
 - todos os scripts devem ser executados a partir da pasta poc-rnp
 
-Passo 1) Autenticar no terminal
+Passo 1) Iniciar o Orderer da primeira vez (irá gerar os certificados, genesis_block, e create_channel tx)
 
-- autenticação no terminal
-`su - @usuário`
-
-Passo 2) Iniciar o Orderer da primeira vez (irá gerar os certificados, genesis_block, e create_channel tx)
-
-`bash scripts/orderer/init.sh`
+`sudo bash scripts/orderer/init.sh`
 
 - após a execução do script acima, para iniciar novamente o Orderer basta rodar o script `start_orderer.sh` e para terminá-lo `stop_orderer.sh`
 
-Passo 3) Peer
+Passo 2) Peer
 
 - Em outro terminal
 
-`su - @usuario`
-
-`bash scripts/peer/init.sh`
+`sudo bash scripts/peer/init.sh`
 
 - após a execução do script acima, para iniciar novamente o Peer basta rodar o script `start_node.sh` e para terminá-lo `stop_node.sh`
 
-Passo 4) Chaincode
+Passo 3) Chaincode
 
 - Em outro terminal
 
-`su - @usuario`
 
-`bash scripts/peer/chaincode/chaincode_package_install.sh`
-`bash scripts/peer/chaincode/chaincode_approve_commit.sh`
-`bash scripts/peer/chaincode/chaincode_test_init.sh`
-`bash scripts/peer/chaincode/chaincode_test.sh `
+`sudo bash scripts/peer/chaincode/chaincode_package_install.sh`
+`sudo bash scripts/peer/chaincode/chaincode_approve_commit.sh`
+`sudo bash scripts/peer/chaincode/chaincode_test_init.sh`
+`sudo bash scripts/peer/chaincode/chaincode_test.sh `
 
 ------
 
