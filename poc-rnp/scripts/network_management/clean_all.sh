@@ -25,4 +25,8 @@ echo "===== Cleaning peer ledger ======"
 
 rm -rf $CONFIG_DIRECTORY/../ledgers/peer/* 2> /dev/null
 
+echo "===== Cleaning chaincode ======"
+
+rm -rf $CONFIG_DIRECTORY/../packages/*.tar.gz 2> /dev/null
+
 echo "Done."
