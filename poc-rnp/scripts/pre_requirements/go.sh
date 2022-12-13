@@ -23,7 +23,7 @@ then
     echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 
     GOPATH=$PWD/../gopath
-    to-absolute-path $GOPATH
+    bash ./to-absolute-path $GOPATH
     GOPATH=$ABS_PATH
 
     echo "export GOPATH=$GOPATH" >> ~/.profile
